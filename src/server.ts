@@ -1,7 +1,7 @@
-import express, { Request, Response, NextFunction } from 'express';
+import path from 'node:path';
 import cors from 'cors';
+import express, { type NextFunction, type Request, type Response } from 'express';
 import morgan from 'morgan';
-import path from 'path';
 
 const app: express.Application = express();
 
