@@ -30,10 +30,9 @@ pnpm install
 
 ### Environment Setup
 
-The project uses environment files located in the `config` directory:
+The project uses environment files located in the `root` directory:
 
-- `.env.development` - Development environment variables
-- `.env.production` - Production environment variables
+- `.env` - Development or productionenvironment variables
 
 You can modify these files to suit your needs.
 
@@ -66,16 +65,13 @@ pnpm clean
 
 ```
 boilerplate-typescript/
-├── config/                 # Environment configuration
-│   ├── .env.development    # Development environment variables
-│   ├── .env.example        # Example environment variables
-│   └── .env.production     # Production environment variables
 ├── src/                    # Source code
 │   └── index.ts            # Entry point
 ├── dist/                   # Compiled output (generated)
 ├── biome.json              # Biome configuration
 ├── tsconfig.json           # TypeScript configuration
 ├── package.json            # Project metadata and scripts
+|   .env                    # enviroment file config
 └── README.md               # Project documentation
 ```
 
