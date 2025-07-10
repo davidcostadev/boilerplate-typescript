@@ -6,7 +6,9 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "experimentalScannerIgnores": ["dist"],
+    "includes": ["**", "!dist/**"]
   },
   "formatter": {
     "enabled": true,
@@ -20,7 +22,7 @@
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "double"
+      "quoteStyle": "single"
     }
   },
   "assist": {

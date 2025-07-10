@@ -13,7 +13,11 @@
     "lint:fix": "biome check --apply .",
     "clean": "rm -rf dist"
   },
-  "keywords": ["typescript", "nodejs", "boilerplate"],
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "boilerplate"
+  ],
   "author": "David Costa <davidcosta@gmail.com>",
   "license": "MIT",
   "packageManager": "pnpm@10.11.0",
