@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
-import { ZodError } from 'zod';
+import { ZodError, z } from 'zod';
 
 export const zodErrorMiddleware = (
   err: Error,
@@ -7,9 +7,14 @@ export const zodErrorMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log('zodErrorMiddleware', err);
+  if (process.env.NODE_ENV === 'development') {
+    console.error('zodErrorMiddleware', err);
+  }
   if (err instanceof ZodError) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json({
+      error: 'Validation Error',
+      issues: z.flattenError(err),
+    });
   } else {
     next(err);
   }

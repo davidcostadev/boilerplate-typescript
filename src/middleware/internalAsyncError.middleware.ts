@@ -1,16 +1,21 @@
-// generated middleware that will handle internal errors
-
 import type { NextFunction, Request, Response } from 'express';
+import { ZodError } from 'zod';
 
 export const asyncErrorWrapper = (
   fn: (req: Request, res: Response, next: NextFunction) => Promise<void>
 ) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async function InternalAsyncErrorWrapper(req: Request, res: Response, next: NextFunction) {
     try {
       await fn(req, res, next);
     } catch (err) {
-      console.log('asyncErrorWrapper', err);
-      res.status(500).json({ error: 'Internal Error' });
+      if (err instanceof ZodError) {
+        next(err);
+      } else {
+        if (process.env.NODE_ENV === 'development') {
+          console.error('asyncErrorWrapper', err);
+        }
+        res.status(500).json({ error: 'Internal Error' });
+      }
     }
   };
 };

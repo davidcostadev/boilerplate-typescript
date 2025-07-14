@@ -12,7 +12,7 @@ export async function getAll({
   limit?: number;
 }) {
   const take = limit ?? 10;
-  const skip = (page ?? 1) * take;
+  const skip = ((page ?? 1) - 1) * take;
 
   return await prisma.entity.findMany({
     where,

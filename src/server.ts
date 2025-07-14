@@ -1,7 +1,9 @@
 import path from 'node:path';
 import cors from 'cors';
-import express, { type NextFunction, type Request, type Response } from 'express';
+import express from 'express';
 import morgan from 'morgan';
+import { apiRoutes } from './apiRoutes';
+import { zodErrorMiddleware } from './middleware/zodError.middleware';
 
 const app: express.Application = express();
 
@@ -10,22 +12,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'combined'));
+app.use(zodErrorMiddleware);
 
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Routes
-app.get('/api/health', (_req: Request, res: Response) => {
-  res.status(200).json({ status: 'ok' });
-});
-
-// Error handling middleware
-app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
-  console.error(err.stack);
-  res.status(500).json({
-    message: 'Internal Server Error',
-    ...(process.env.NODE_ENV === 'development' && { error: err.message }),
-  });
-});
+app.use('/api', apiRoutes);
 
 export default app;
