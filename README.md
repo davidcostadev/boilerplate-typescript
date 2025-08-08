@@ -1,13 +1,14 @@
 # TypeScript Node.js Boilerplate
 
-A strictly typed Node.js boilerplate with TypeScript, tsx, env-cmd, and Biome.
+A strictly typed Node.js boilerplate with TypeScript, tsx, env-cmd, ESLint, and Prettier.
 
 ## Features
 
 - **TypeScript**: Strictly typed JavaScript with the most strict configuration
 - **tsx**: Run TypeScript files directly without compilation
 - **env-cmd**: Environment variable management
-- **Biome**: Modern linting and formatting
+- **ESLint**: Linting for code quality
+- **Prettier**: Opinionated code formatter
 - **pnpm**: Fast, disk space efficient package manager
 
 ## Getting Started
@@ -68,7 +69,8 @@ boilerplate-typescript/
 ├── src/                    # Source code
 │   └── index.ts            # Entry point
 ├── dist/                   # Compiled output (generated)
-├── biome.json              # Biome configuration
+├── .eslintrc.json          # ESLint configuration
+├── .prettierrc             # Prettier configuration
 ├── tsconfig.json           # TypeScript configuration
 ├── package.json            # Project metadata and scripts
 |   .env                    # enviroment file config
