@@ -1,3 +1,7 @@
 ignoredBuiltDependencies:
   - '@biomejs/biome'
   - esbuild
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - prisma
